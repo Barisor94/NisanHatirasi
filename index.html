@@ -454,15 +454,20 @@ music.volume = 0.5;
 
 const startMusic = async () => {
 
-  try{
+  try {
 
-  await music.play();
-overlay.remove();    
-  }catch(err){
+    await music.play();
+
+    overlay.style.display = "none";
+
+  } catch(err) {
 
     console.log(err);
 
   }
+
+};
+
 overlay.addEventListener("click", startMusic);
 
   
