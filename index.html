@@ -406,6 +406,7 @@ const songs = [
 let currentSong = 0;
 
 const music = document.getElementById("bg-music");
+  music.src = songs[0];
 const btn = document.getElementById("music-btn");
 
 function playSong(index){
@@ -442,9 +443,17 @@ btn.onclick = () => {
 
 window.addEventListener("load", () => {
 
-  const startMusic = () => {
+  music.volume = 0.5;
 
-    playSong(currentSong);
+  const startMusic = async () => {
+
+    try{
+
+      await music.play();
+
+    }catch(e){
+      console.log(e);
+    }
 
     document.removeEventListener("click", startMusic);
     document.removeEventListener("scroll", startMusic);
@@ -455,6 +464,8 @@ window.addEventListener("load", () => {
   document.addEventListener("scroll", startMusic);
 
 });
+
+
 </script>
 </body>
 </html>
