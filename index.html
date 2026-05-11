@@ -592,6 +592,7 @@ async function loadMessages(){
   querySnapshot.forEach((doc) => {
 
     const data = doc.data();
+    if(!data.name || !data.message) return;
 
     messagesDiv.innerHTML += `
       <div class="message-card">
