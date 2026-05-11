@@ -440,8 +440,11 @@ btn.onclick = () => {
 
 };
 
-playSong(currentSong);
+document.body.addEventListener("click", () => {
 
+  playSong(currentSong);
+
+}, { once:true });
 </script>
 </body>
 </html>
