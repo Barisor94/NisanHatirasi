@@ -452,24 +452,22 @@ const btn = document.getElementById("music-btn");
 const overlay = document.getElementById("music-overlay");
 
 music.volume = 0.5;
-
-const startMusic = async () => {
+overlay.addEventListener("click", async () => {
 
   try {
 
     await music.play();
 
-overlay.style.opacity = "0";
-overlay.style.pointerEvents = "none";
+    overlay.style.display = "none";
+
   } catch(err) {
 
     console.log(err);
 
   }
 
-};
+});
 
-overlay.addEventListener("click", startMusic);
 
   
 
