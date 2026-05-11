@@ -440,11 +440,21 @@ btn.onclick = () => {
 
 };
 
-document.body.addEventListener("click", () => {
+window.addEventListener("load", () => {
 
-  playSong(currentSong);
+  const startMusic = () => {
 
-}, { once:true });
+    playSong(currentSong);
+
+    document.removeEventListener("click", startMusic);
+    document.removeEventListener("scroll", startMusic);
+
+  };
+
+  document.addEventListener("click", startMusic);
+  document.addEventListener("scroll", startMusic);
+
+});
 </script>
 </body>
 </html>
