@@ -336,7 +336,37 @@ async function loadGallery(){
     img.style.objectFit = "cover";
     img.style.borderRadius = "20px";
     img.style.margin = "10px";
+img.onclick = () => {
 
+  const overlay = document.createElement("div");
+
+  overlay.style.position = "fixed";
+  overlay.style.top = "0";
+  overlay.style.left = "0";
+  overlay.style.width = "100%";
+  overlay.style.height = "100%";
+  overlay.style.background = "rgba(0,0,0,0.9)";
+  overlay.style.display = "flex";
+  overlay.style.alignItems = "center";
+  overlay.style.justifyContent = "center";
+  overlay.style.zIndex = "9999";
+
+  const bigImg = document.createElement("img");
+
+  bigImg.src = url;
+  bigImg.style.maxWidth = "90%";
+  bigImg.style.maxHeight = "90%";
+  bigImg.style.borderRadius = "20px";
+
+  overlay.appendChild(bigImg);
+
+  overlay.onclick = () => {
+    overlay.remove();
+  };
+
+  document.body.appendChild(overlay);
+
+};
     gallery.appendChild(img);
 
   }
