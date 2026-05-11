@@ -388,11 +388,11 @@ img.onclick = () => {
 loadGallery();
 
 </script>
-  <audio id="bg-music" autoplay></audio>
+ 
+</script>
+  <audio id="bg-music"></audio>
 
-<button id="music-btn">
-  🎵
-</button>
+<button id="music-btn">🎵</button>
 
 <script>
 
@@ -406,46 +406,35 @@ const songs = [
 let currentSong = 0;
 
 const music = document.getElementById("bg-music");
-  music.src = songs[0];
 const btn = document.getElementById("music-btn");
-
-function playSong(index){
-
-  music.src = songs[index];
-
-  music.play();
-
-}
-
-music.addEventListener("ended", () => {
-
-  currentSong++;
-
-  if(currentSong >= songs.length){
-    currentSong = 0;
-  }
-
-});
 
 music.src = songs[currentSong];
 
-btn.onclick = async () => {
+btn.addEventListener("click", async () => {
 
-  if(music.paused){
+  try{
 
-    await music.play();
+    if(music.paused){
 
-    btn.innerHTML = "🔊";
+      await music.play();
 
-  }else{
+      btn.innerHTML = "🔊";
 
-    music.pause();
+    }else{
 
-    btn.innerHTML = "🔇";
+      music.pause();
+
+      btn.innerHTML = "🔇";
+
+    }
+
+  }catch(err){
+
+    console.log(err);
 
   }
 
-};
+});
 
 music.addEventListener("ended", () => {
 
@@ -460,11 +449,6 @@ music.addEventListener("ended", () => {
   music.play();
 
 });
-
-
-  
-
-
 
 </script>
 </body>
