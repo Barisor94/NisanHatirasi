@@ -427,18 +427,39 @@ music.addEventListener("ended", () => {
 
 });
 
-btn.onclick = () => {
-  music.src = songs[currentSong];
+music.src = songs[currentSong];
+
+btn.onclick = async () => {
 
   if(music.paused){
-    music.play();
-    btn.innerHTML = "🎵";
+
+    await music.play();
+
+    btn.innerHTML = "🔊";
+
   }else{
+
     music.pause();
+
     btn.innerHTML = "🔇";
+
   }
 
 };
+
+music.addEventListener("ended", () => {
+
+  currentSong++;
+
+  if(currentSong >= songs.length){
+    currentSong = 0;
+  }
+
+  music.src = songs[currentSong];
+
+  music.play();
+
+});
 
 
   
