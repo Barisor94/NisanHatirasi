@@ -173,6 +173,7 @@
   justify-content:center;
   z-index:99999;
   backdrop-filter:blur(6px);
+  transition:0.5s;
 }
 
 .overlay-content{
@@ -458,8 +459,8 @@ const startMusic = async () => {
 
     await music.play();
 
-    overlay.style.display = "none";
-
+overlay.style.opacity = "0";
+overlay.style.pointerEvents = "none";
   } catch(err) {
 
     console.log(err);
