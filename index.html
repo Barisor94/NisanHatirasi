@@ -418,9 +418,7 @@ loadGallery();
 
 </script>
  
-<audio id="bg-music" autoplay loop>
-  <source src="music1.mp3" type="audio/mpeg">
-</audio>
+<audio id="bg-music"></audio>
 <div id="music-overlay">
 
   <div class="overlay-content">
@@ -437,6 +435,17 @@ loadGallery();
 <script>
 
 const music = document.getElementById("bg-music");
+  const songs = [
+  "music1.mp3",
+  "music2.mp3",
+  "music3.mp3",
+  "music4.mp3",
+  "music5.mp3"
+];
+
+let currentSong = 0;
+
+music.src = songs[currentSong];
 const btn = document.getElementById("music-btn");
 const overlay = document.getElementById("music-overlay");
 
@@ -474,7 +483,18 @@ btn.addEventListener("click", () => {
   }
 
 });
+music.addEventListener("ended", () => {
 
+  currentSong++;
+
+  if(currentSong >= songs.length){
+    currentSong = 0;
+  }
+
+  music.src = songs[currentSong];
+  music.play();
+
+});
 </script>
 </body>
 </html>
